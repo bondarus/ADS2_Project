@@ -5,6 +5,7 @@ public class TST {
 
     private int n; //size
     private Node<String> root; //root of TST
+    private HashMap<String, String> mapTable;
 
     private static class Node<String> {
         private char c;                         // character
@@ -82,8 +83,26 @@ public class TST {
         collect(x.right, prefix, queue);
     }
 
+    public List<String> busStopInformation(String in)
+    {
+        List<String> busStopList = new LinkedList<>();
+        this.keysWithPrefix(in).forEach((info) -> busStopList.add(mapTable.get(this.get(info))));
+        if(busStopList.isEmpty()) busStopList.add("Bus stop not found");
+        return busStopList;
+    }
+
     public TST(String fileInput)
     {
+        Scanner sc = null;
+        File file = new File(fileInput);
+        try {
+            sc = new Scanner(file);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        sc.nextLine();
+
+
 
     }
 
