@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+//Credit to Princeton
 public class TST {
 
     private int n; //size
@@ -93,6 +94,7 @@ public class TST {
 
     public TST(String fileInput)
     {
+        mapTable = new HashMap<String, String>();
         Scanner sc = null;
         File file = new File(fileInput);
         try {
@@ -101,8 +103,41 @@ public class TST {
             e.printStackTrace();
         }
         sc.nextLine();
-
-
+        while(sc.hasNextLine())
+        {
+            String stopID, st;
+            String line = sc.nextLine();
+            String[] lineArray = line.split(",");
+            stopID = lineArray[0];
+            StringBuilder string = new StringBuilder();
+            string.append(lineArray[2]);
+            if(   string.substring(0,2).equals("SB") || string.substring(0,2).equals("NB")
+               || string.substring(0,2).equals("WB") || string.substring(0,2).equals("EB"))
+            {
+                st = string.substring(0,2);
+                string.delete(0,3);
+                string.append(" "+st);
+            }
+            else if(string.substring(0,8).equals("FLAGSTOP"))
+            {
+                st = string.substring(0,11);
+                string.delete(0,12);
+                string.append(" "+st);
+            }
+            String stopName = string.toString();
+            this.put(stopName, stopID);
+            StringBuilder stringInfo = new StringBuilder();
+            stringInfo.append("stop_id: "+stopID+"\n");
+            stringInfo.append("stop_code: "+lineArray[1]+"\n");
+            stringInfo.append("stop_name: "+stopName+"\n");
+            stringInfo.append("stop_descrip: "+lineArray[3]+"\n");
+            stringInfo.append("stop_lat: "+lineArray[4]+"\n");
+            stringInfo.append("stop_lon: "+lineArray[5]+"\n");
+            stringInfo.append("zone: "+lineArray[6]+"\n");
+            stringInfo.append("location: "+lineArray[8]+"\n");
+            String stopInfo = stringInfo.toString();
+            mapTable.put(stopID, stopInfo);
+        }
 
     }
 
