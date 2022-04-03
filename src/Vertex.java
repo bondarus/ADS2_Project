@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Vertex  implements Comparable<Vertex>{
-    private String name;
+    public String name;
     private List<Edge> edges;
     private double distance = Double.MAX_VALUE;
     private Vertex previousVertex;
