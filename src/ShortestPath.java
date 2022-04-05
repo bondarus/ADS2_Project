@@ -6,6 +6,8 @@ public class ShortestPath {
     public ArrayList<String> startStops = new ArrayList<String>();
     public ArrayList<String> endStops = new ArrayList<String>();
     public ArrayList<Double> weights = new ArrayList<Double>();
+    public HashMap<String, Vertex> vertexMap = new HashMap<String, Vertex>();
+    public Double cost;
 
     public List<Vertex> shortestPathList(Vertex destVertex)
     {
@@ -52,7 +54,6 @@ public class ShortestPath {
         File busStopTimes = new File(busStopTimesFile);
         Scanner sc3 = new Scanner(busStopTimes);
 
-        HashMap<String, Vertex> vertexMap = new HashMap<String, Vertex>();
         ArrayList<String[]> busTripStopID = new ArrayList<String[]>();
         while(sc1.hasNextLine())
         {

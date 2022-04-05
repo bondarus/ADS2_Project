@@ -26,11 +26,46 @@ public class UserInterface {
                     if(val == 0) { quit = true; }
                     if(val == 1)
                     {
-
+                        String inputSource = "";
+                        String inputDestination = "";
+                        HashMap<String, Vertex> vertexes = dijkstra.vertexMap;
+                        Double cost = dijkstra.cost;
+                        boolean loop = true;
+                        while(loop)
+                        {
+                            String regex = "[0-9]+";
+                            System.out.println("Please enter your starting bus stop ID: ");
+                            inputSource = input.nextLine();
+                            System.out.println("Please enter your destination bus stop ID: ");
+                            inputDestination = input.nextLine();
+                            if(!(inputSource.matches(regex)) || !(inputDestination.matches(regex)))
+                            {
+                                System.out.println("Sorry, bus stop ID's can only contain number digits");
+                            }
+                            else
+                            {
+                                if(vertexes.get(inputSource) == null || vertexes.get(inputDestination) == null)
+                                {
+                                    System.out.println("Sorry, one or both of the bus stops don't exist");
+                                }
+                                else { loop = false; }
+                            }
+                        }
+                        Vertex source = vertexes.get(inputSource);
+                        Vertex destination = vertexes.get(inputDestination);
+                        dijkstra.computePath(source);
+                        cost = dijkstra.cost;
+                        System.out.println("The shortest path from " + source.name + " to " + destination.name +
+                                           " is " + dijkstra.shortestPathList(destination) +
+                                           "\nThe total cost of the path is: " + dijkstra.cost + "\n");
                     }
                     if(val == 2)
                     {
-
+                        System.out.println("Please enter the name of the bus stop: ");
+                        String name = input.nextLine();
+                        tst.busStopInformation(name).forEach((info) -> {
+                            System.out.println(info);
+                        });
                     }
                     if(val == 3)
                     {
