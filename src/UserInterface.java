@@ -34,19 +34,19 @@ public class UserInterface {
                         while(loop)
                         {
                             String regex = "[0-9]+";
-                            System.out.println("Please enter your starting bus stop ID: ");
+                            System.out.print("\nPlease enter your starting bus stop ID: ");
                             inputSource = input.nextLine();
-                            System.out.println("Please enter your destination bus stop ID: ");
+                            System.out.print("Please enter your destination bus stop ID: ");
                             inputDestination = input.nextLine();
                             if(!(inputSource.matches(regex)) || !(inputDestination.matches(regex)))
                             {
-                                System.out.println("Sorry, bus stop ID's can only contain number digits");
+                                System.out.println("\nSorry, bus stop ID's can only contain number digits");
                             }
                             else
                             {
                                 if(vertexes.get(inputSource) == null || vertexes.get(inputDestination) == null)
                                 {
-                                    System.out.println("Sorry, one or both of the bus stops don't exist");
+                                    System.out.println("\nSorry, one or both of the bus stops don't exist");
                                 }
                                 else { loop = false; }
                             }
@@ -69,7 +69,7 @@ public class UserInterface {
                     }
                     if(val == 3)
                     {
-
+                        ArrivalTime.printArrival(file);
                     }
                 }
             }

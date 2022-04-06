@@ -11,6 +11,7 @@ public class ShortestPath {
 
     public List<Vertex> shortestPathList(Vertex destVertex)
     {
+        cost = destVertex.getDistance();
         List<Vertex> path = new ArrayList<>();
         for(Vertex vertex = destVertex; vertex != null; vertex = vertex.getPreviousVertex())
         {
