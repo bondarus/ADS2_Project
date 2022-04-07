@@ -130,7 +130,7 @@ public class TST {
             stringInfo.append("stop_id: "+stopID+"\n");
             stringInfo.append("stop_code: "+lineArray[1]+"\n");
             stringInfo.append("stop_name: "+stopName+"\n");
-            stringInfo.append("stop_descrip: "+lineArray[3]+"\n");
+            stringInfo.append("stop_description: "+lineArray[3]+"\n");
             stringInfo.append("stop_lat: "+lineArray[4]+"\n");
             stringInfo.append("stop_lon: "+lineArray[5]+"\n");
             stringInfo.append("zone: "+lineArray[6]+"\n");

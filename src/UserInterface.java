@@ -16,7 +16,7 @@ public class UserInterface {
             System.out.println("Type in '1' for the shortest path between 2 bus stops,");
             System.out.println("Type in '2' to search a bus stop you're looking for,");
             System.out.println("Type in '3' for the arrival time of the bus,");
-            System.out.print("Type in '0' to exit the program\n-> ");
+            System.out.print("Type in '0' or 'quit' to exit the program\n-> ");
             if(input.hasNextInt())
             {
                 int val = input.nextInt();
@@ -61,7 +61,7 @@ public class UserInterface {
                     }
                     if(val == 2)
                     {
-                        System.out.println("Please enter the name of the bus stop: ");
+                        System.out.print("Please enter the name of the bus stop: ");
                         String name = input.nextLine();
                         tst.busStopInformation(name).forEach((info) -> {
                             System.out.println(info);
@@ -72,6 +72,11 @@ public class UserInterface {
                         ArrivalTime.printArrival(file);
                     }
                 }
+            }
+            else if(input.hasNextLine())
+            {
+                String s = input.nextLine();
+                if(s.equalsIgnoreCase("quit")) { quit = true; }
             }
             else
             {
